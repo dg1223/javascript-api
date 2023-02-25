@@ -25,6 +25,11 @@ const displayMeals = (meals) => {
             <p class="card-text">
                 ${meal.strInstructions}
             </p>
+            <!-- Button trigger modal -->
+            <button onclick="loadMealDetail(${meal.idMeal})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mealsDetails">
+                Details
+            </button>
+
         </div>
     </div>
     `;
@@ -37,6 +42,18 @@ const searchMeals = () => {
   const searchText = document.getElementById("search-field").value;
   //   console.log(searchText);
   loadMeals(searchText);
+};
+
+loadMealDetail = (idMeal) => {
+  const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => console.log(data.meals[0]));
+  //   console.log(idMeal);
+};
+
+const displayMealDetails = (meal) => {
+  document.getElementById("mealsDetailsLabel").innerText = meal.strMeal;
 };
 
 loadMeals("rice");
