@@ -48,8 +48,8 @@ loadMealDetail = (idMeal) => {
   const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => console.log(data.meals[0]));
-  //   console.log(idMeal);
+    .then((data) => displayMealDetails(data.meals[0]));
+  //   console.log(data.meals[0])
 };
 
 const displayMealDetails = (meal) => {
