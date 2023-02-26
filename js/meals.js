@@ -54,6 +54,10 @@ loadMealDetail = (idMeal) => {
 
 const displayMealDetails = (meal) => {
   document.getElementById("mealsDetailsLabel").innerText = meal.strMeal;
+  const mealsDetails = document.getElementById("mealsDetailsBody");
+  mealsDetails.innerHTML = `
+  <img class="img-fluid" src="${meal.strMealThumb}">
+  `;
 };
 
 loadMeals("rice");
